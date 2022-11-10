@@ -1,3 +1,13 @@
+clone le repo
+cd dofus
+docker compose up
+pour l'instant : docker desktop -> container laravel-est-1 -> trois petits points sur le côté -> open in terminal -> dans le terminal -> composer install
+
+Ca devrait marcher
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
