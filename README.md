@@ -1,9 +1,26 @@
-clone le repo
-cd dofus
-docker compose up
-pour l'instant : docker desktop -> container laravel-est-1 -> trois petits points sur le côté -> open in terminal -> dans le terminal -> composer install
+<h1>Lancement de l'app avec docker</h1>
+Dans le répertoire : (Pour tout sauf W10)
 
-Ca devrait marcher
+```
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/var/www/html \
+    -w /var/www/html \
+    laravelsail/php81-composer:latest \
+    composer install --ignore-platform-reqs
+```
+Pour W10 : (nécessite php + composer)
+
+```
+composer update
+```
+
+Puis :
+
+```
+docker compose up
+```
+
 
 
 
