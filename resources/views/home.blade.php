@@ -17,11 +17,9 @@
                     {{ __('You are logged in!') }}
 
                         <li class="nav-item dropdown">
-                                <a class="dropdown-item" href="{{ route('makeEquipement') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Crée un nouvel équipement') }}
-                                </a>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('makeEquipement') }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Crée un nouvel équipement') }}
+                            </a>
                         </li>
                 </div>
             </div>

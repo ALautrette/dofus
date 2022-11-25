@@ -17,8 +17,8 @@
                         {{ __('You are logged in!') }}
 
                         <li class="nav-item dropdown">
-                            <a class="dropdown-item" href="{{ route('homme') }}"
-                            {{ __('Retour a l\'acceuille') }}
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('makeEquipement') }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Retour a l\'acceuille') }}
                             </a>
                         </li>
                     </div>
