@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/seb', function () {
-    return view('test');
+
+Route::get('/login', function () {
+    return view('auth.login');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/makeEquipement', [App\Http\Controllers\HomeController::class, 'index'])->name('makeEquipement');
+
