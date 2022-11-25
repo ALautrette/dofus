@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('emplacements', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('libelle')->unique();
             $table->string('image_path');
+
         });
     }
 

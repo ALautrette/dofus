@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('statistiques', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('libelle')->unique();
             $table->string('image_path');
         });

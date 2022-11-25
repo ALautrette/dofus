@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('nom')->unique();
-            $table->string('image_path');
+            $table->string('libelle')->unique();
+            $table->unsignedBigInteger('emplacement_id');
+            $table->foreign('emplacement_id')->references('id')->on('emplacements')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('types');
     }
 };

@@ -9,6 +9,8 @@ class Equipement extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -19,6 +21,6 @@ class Equipement extends Model
     }
 
     public function items(){
-        return $this->belongsToMany(Item::class);
+        return $this->belongsToMany(Item::class, 'equipement_item');
     }
 }

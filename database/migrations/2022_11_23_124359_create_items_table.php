@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('libelle')->unique();
             $table->integer('niveau');
             $table->string('image_path');
+            $table->unsignedBigInteger('type_id');
+            $table->foreign('type_id')->references('id')->on('types')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

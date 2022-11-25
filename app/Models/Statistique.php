@@ -9,6 +9,8 @@ class Statistique extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function itemsBonus(){
         return $this->belongsToMany(Item::class, 'item_statistique_bonus')->withPivot('valeur');
     }
