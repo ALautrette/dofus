@@ -55,6 +55,83 @@ begin
 end;
 $_$;
 
+--Donne le nb d'item à l'emplacement donné pour l'équipement donné
+create function nb_item_emplacement_equipement(emplacement varchar, equipementid bigint)
+    returns integer
+as $$
+declare nb integer;
+begin
+    select count(*) from equipement_item
+                             join items on equipement_item.item_id = items.id
+                             join types on items.type_id = types.id
+                             join emplacements on types.emplacement_id = emplacements.id
+    where equipement_id = $2 and emplacements.libelle = $1 into nb;
+    return nb;
+end;
+$$
+    LANGUAGE PLPGSQL;
+
+
+--Détermine si l'emplacement de l'item passé en paramètre est bien disponible poour l'équipement donné
+create function emplacement_libre(itemid bigint, equipementid bigint)
+    returns bool
+as $$
+declare emplacement varchar;
+    declare nb integer;
+begin
+    select emplacement_item($1) into emplacement;
+    select nb_item_emplacement_equipement(emplacement, $2) into nb;
+    case emplacement
+        when 'Chapeau', 'Cape', 'Amulette', 'Corps à corps', 'Bouclier', 'Bottes', 'Ceinture', 'Familier' then
+            return nb < 1;
+        when 'Anneau' then
+            return nb < 2;
+        when 'Dofus' then
+            return nb < 6;
+        else
+            raise exception 'Emplacement non trouvé';
+        end case;
+end;
+$$
+    LANGUAGE PLPGSQL;
+
+--Vérifie qu'un item n'est pas déjà présent dans l'équipement
+create function non_deja_equipe(itemid bigint, equipementid bigint)
+    returns bool
+as $$
+declare ro equipements%rowtype;
+begin
+    select * from equipement_item where equipement_id = $2 and item_id = $1 into ro;
+    if found then
+        return false;
+    else return true;
+    end if;
+end;
+$$
+    LANGUAGE PLPGSQL;
+
+--Procédure appelée à chaque ajout dans la table emplacement_item
+create function ajout_item()
+    returns trigger
+as $$
+begin
+    if(emplacement_libre(new.item_id, new.equipement_id)) then
+        if(non_deja_equipe(new.item_id, new.equipement_id)) then
+            return new;
+        else raise exception 'Item déjà équipé';
+        end if;
+    else
+        raise exception 'Emplacement non disponible';
+    end if;
+end;
+$$
+    LANGUAGE PLPGSQL;
+
+create trigger emplacement_libre
+    before insert or update on equipement_item
+    for each row
+execute procedure ajout_item();
+
 
 ALTER FUNCTION public.emplacement_item(bigint) OWNER TO sail;
 
