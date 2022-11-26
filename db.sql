@@ -56,7 +56,7 @@ end;
 $_$;
 
 --Donne le nb d'item à l'emplacement donné pour l'équipement donné
-create function nb_item_emplacement_equipement(emplacement varchar, equipementid bigint)
+create function public.nb_item_emplacement_equipement(emplacement varchar, equipementid bigint)
     returns integer
 as $$
 declare nb integer;
@@ -73,7 +73,7 @@ $$
 
 
 --Détermine si l'emplacement de l'item passé en paramètre est bien disponible poour l'équipement donné
-create function emplacement_libre(itemid bigint, equipementid bigint)
+create function public.emplacement_libre(itemid bigint, equipementid bigint)
     returns bool
 as $$
 declare emplacement varchar;
@@ -96,7 +96,7 @@ $$
     LANGUAGE PLPGSQL;
 
 --Vérifie qu'un item n'est pas déjà présent dans l'équipement
-create function non_deja_equipe(itemid bigint, equipementid bigint)
+create function public.non_deja_equipe(itemid bigint, equipementid bigint)
     returns bool
 as $$
 declare ro equipements%rowtype;
@@ -111,7 +111,7 @@ $$
     LANGUAGE PLPGSQL;
 
 --Procédure appelée à chaque ajout dans la table emplacement_item
-create function ajout_item()
+create function public.ajout_item()
     returns trigger
 as $$
 begin
@@ -126,11 +126,6 @@ begin
 end;
 $$
     LANGUAGE PLPGSQL;
-
-create trigger emplacement_libre
-    before insert or update on equipement_item
-    for each row
-execute procedure ajout_item();
 
 
 ALTER FUNCTION public.emplacement_item(bigint) OWNER TO sail;
@@ -1327,4 +1322,9 @@ ALTER TABLE ONLY public.types
 --
 -- PostgreSQL database dump complete
 --
+
+create trigger emplacement_libre
+    before insert or update on public.equipement_item
+    for each row
+execute procedure public.ajout_item();
 
