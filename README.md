@@ -1,5 +1,5 @@
 <h1>Lancement de l'app avec docker</h1>
-Dans le répertoire : (Pour tout sauf W10)
+Dans le répertoire :
 
 ```
 docker run --rm \
@@ -9,7 +9,7 @@ docker run --rm \
     laravelsail/php81-composer:latest \
     composer install --ignore-platform-reqs
 ```
-Pour W10 : (nécessite php + composer)
+Ou : (nécessite php + composer)
 
 ```
 composer update
