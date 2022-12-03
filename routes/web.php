@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EquipementController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +28,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/makeEquipement', [App\Http\Controllers\HomeController::class, 'index'])->name('makeEquipement');
+Route::get('/makeequipement',  [EquipementController::class, 'makeEquipement'])->name('makeequipement');
 
+Route::get('/info',  [EquipementController::class, 'info'])->name('info');
+
+Route::get('/equipement_enregistrer',  [EquipementController::class, 'equipementEnregistrer'])->name('equipement_enregistrer');
+
+Route::get('users', [EquipementController::class, 'create']);
+Route::post('users', [EquipementController::class, 'store']);

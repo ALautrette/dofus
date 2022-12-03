@@ -55,11 +55,3 @@ services:
             - ./docker/pgadmin:/root/.pgadmin
         ports:
             - 8081:80
-        networks:
-            - sail
-networks:
-    sail:
-        driver: bridge
-volumes:
-    sail-pgsql:
-        driver: local
