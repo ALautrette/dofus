@@ -14,4 +14,8 @@ class Type extends Model
     public function emplacement(){
         return $this->belongsTo(Emplacement::class);
     }
+
+    public function getEmplacement(){
+        return $this->emplacement()->first();
+    }
 }

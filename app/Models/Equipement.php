@@ -9,6 +9,7 @@ class Equipement extends Model
 {
     use HasFactory;
 
+
     public $timestamps = false;
 
     public function user()
