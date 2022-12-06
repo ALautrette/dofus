@@ -26,6 +26,20 @@
                                 {{ __('voir les équipement enregistrer') }}
                             </a>
                         </li>
+                        <form method="post" action="{{route("saveequipement")}}" id="FormulaireClasse">
+                            @csrf
+                            <label for="nomEquipement">Nom de l'equipement</label>
+                            <input type="text" name="nomEquipement" placeholder="Nom">
+
+                            <label for="classe">Classe</label>
+                            <select name="classe" id="classe">
+                                @foreach($classes as $classe)
+                                    <option value="{{$classe->id}}">{{$classe->nom}}</option>
+                                @endforeach
+                            </select>
+                        </form>
+                        <button form="FormulaireClasse"> Créer </button>
+
                     </div>
                 </div>
             </div>

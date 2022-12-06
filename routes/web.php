@@ -29,6 +29,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/makeequipement',  [EquipementController::class, 'makeEquipement'])->name('makeequipement');
+Route::post('/makeequipement/save', [EquipementController::class, 'saveEquipement'])->name('saveequipement');
 
 Route::get('/info',  [EquipementController::class, 'info'])->name('info');
 
