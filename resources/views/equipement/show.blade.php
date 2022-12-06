@@ -51,4 +51,8 @@
 
     </form>
     <button form="items">Sauvegarder</button>
+
+    @foreach($caracs as $carac)
+        <p>{{$carac->libelle}} : {{$equipeCaracs[$carac->libelle]}}</p>
+    @endforeach
 @endsection

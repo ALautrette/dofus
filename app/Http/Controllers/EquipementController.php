@@ -6,6 +6,7 @@ use App\Models\Classe;
 use App\Models\Emplacement;
 use App\Models\Equipement;
 use App\Models\Item;
+use App\Models\Statistique;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,8 +28,14 @@ class EquipementController extends Controller
                 $objets[$item->type->emplacement->libelle] = [$item];
             }
         }
-
+        $statistiques = Statistique::all();
+        $equipementStats = [];
         $countDofus = 1;
+        foreach ($statistiques as $statistique) {
+
+            $equipementStats[$statistique->libelle] = 0;
+
+        }
         foreach ($equipement->items as $item) {
             $emplacement = $item->type->emplacement->libelle;
 
@@ -42,12 +49,19 @@ class EquipementController extends Controller
                     $equipes[$emplacement . $countDofus++] = $item;
                 }
             }
+            foreach ($item->statistiquesBonus as $statistique){
+                $equipementStats[$statistique->libelle] += $statistique->pivot->valeur;
+
+            }
         }
+
         return view('equipement.show', [
             'equipement' => $equipement,
             'emplacements' => Emplacement::all(),
             'equipes' => $equipes,
             'items' => $objets,
+            'equipeCaracs' => $equipementStats,
+            'caracs' => $statistiques,
         ]);
     }
 
@@ -56,12 +70,12 @@ class EquipementController extends Controller
         $data = $request->except("_token");
         DB::table('equipement_item')->where('equipement_id', $id)->delete();
         foreach ($data as $value) {
-            try{
+            try {
                 DB::table('equipement_item')->insert([
                     'equipement_id' => $id,
                     'item_id' => $value,
                 ]);
-            } catch (QueryException $e){
+            } catch (QueryException $e) {
                 return redirect()->back()->withErrors(['error' => $e->getMessage()]);
             }
 
