@@ -28,4 +28,8 @@ class Item extends Model
     public function type(){
         return $this->belongsTo(Type::class);
     }
+
+    public function getType(){
+        return $this->type()->first();
+    }
 }

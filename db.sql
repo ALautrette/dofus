@@ -118,7 +118,7 @@ begin
     if(emplacement_libre(new.item_id, new.equipement_id)) then
         if(non_deja_equipe(new.item_id, new.equipement_id)) then
             return new;
-        else raise exception 'Item déjà équipé';
+        else raise exception 'Il n est pas possible d équiper deux fois le même item';
         end if;
     else
         raise exception 'Emplacement non disponible';
@@ -792,6 +792,55 @@ INSERT INTO public.emplacements (id, libelle, image_path) VALUES (7, 'Bottes', '
 INSERT INTO public.emplacements (id, libelle, image_path) VALUES (8, 'Bouclier', 'bouclier.jpg');
 INSERT INTO public.emplacements (id, libelle, image_path) VALUES (9, 'Familier', 'familier.jpg');
 INSERT INTO public.emplacements (id, libelle, image_path) VALUES (10, 'Dofus', 'dofus.jpg');
+
+
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (1, 'chapeau', 1);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (2, 'cape', 2);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (3, 'sac', 2);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (4, 'anneau', 4);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (5, 'amulette', 5);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (6, 'ceinture', 6);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (7, 'bottes', 7);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (8, 'bouclier', 8);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (9, 'familier', 9);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (10, 'dragodinde', 9);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (11, 'muldo', 9);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (12, 'montilier', 9);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (13, 'volkorne', 9);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (14, 'dofus', 10);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (15, 'trophée', 10);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (16, 'prysmaradite', 10);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (17, 'hache', 3);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (18, 'arc', 3);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (19, 'baguette', 3);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (20, 'bâton', 3);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (21, 'dague', 3);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (22, 'épée', 3);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (23, 'faux', 3);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (24, 'marteau', 3);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (25, 'outil', 3);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (26, 'pelle', 3);
+INSERT INTO public.types (id, libelle, emplacement_id) VALUES (27, 'pioche', 3);
+
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (1, 'tendresse de belladone', 200, '', 4);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (2, 'collier gris', 192, '', 5);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (3, 'la rondelle', 200, '', 8);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (4, 'anneau toriété', 200, '', 4);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (5, 'ceinture bine', 183, '', 6);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (6, 'sandales pinistes', 194, '', 7);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (7, 'chapeau lochon', 195, '', 1);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (8, 'bâton beau', 197, '', 20);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (9, 'dagues ricol', 198, '', 21);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (10, 'cape ostrophe', 200, '', 2);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (11, 'sac rebleux', 80, '', 3);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (13, 'dauge', 60, '', 9);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (14, 'kwaltess', 200, '', 12);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (15, 'dofus ocre', 160, '', 14);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (16, 'dofus vulbis', 180, '', 14);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (17, 'remueur', 100, '', 15);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (18, 'nomade', 100, '', 15);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (19, 'prymune', 200, '', 16);
+INSERT INTO public.items (id, libelle, niveau, image_path, type_id) VALUES (20, 'pryximite', 200, '', 16);
 
 
 --

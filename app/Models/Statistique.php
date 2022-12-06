@@ -11,6 +11,16 @@ class Statistique extends Model
 
     public $timestamps = false;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'libelle',
+        'image_path',
+    ];
+
     public function itemsBonus(){
         return $this->belongsToMany(Item::class, 'item_statistique_bonus')->withPivot('valeur');
     }
