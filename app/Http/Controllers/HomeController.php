@@ -25,8 +25,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function makeEquipement()
-    {
-        return view('makeEquipement');
-    }
 }

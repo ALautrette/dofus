@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EquipementController;
+use App\Http\Controllers\UsersController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +36,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/makeEquipement', [App\Http\Controllers\HomeController::class, 'index'])->name('makeEquipement');
+Route::get('/makeequipement',  [EquipementController::class, 'makeEquipement'])->name('makeequipement');
+Route::post('/makeequipement/save', [EquipementController::class, 'saveEquipement'])->name('saveequipement');
+
+
+
+
+Route::get('/equipement_enregistrer',  [EquipementController::class, 'equipementEnregistrer'])->name('equipement_enregistrer');
+
 
 Route::get('/equipement/{id}', [EquipementController::class, 'show'])->name('show_equipement');
 
 Route::post('/equipement/save/{id}', [EquipementController::class, 'save'])->name('save_equipement')->middleware('auth');
-
