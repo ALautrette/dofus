@@ -4,6 +4,7 @@
     @if($errors->any())
         <p style="color: red">{{$errors->first()}}</p>
     @endif
+    <p>Nom de l'équipement : {{$equipement->nom}}</p>
     <form method="POST" action="{{ route('save_equipement', $equipement->id) }}" id="items">
         @csrf
 

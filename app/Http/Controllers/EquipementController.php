@@ -49,7 +49,7 @@ class EquipementController extends Controller
                     $equipes[$emplacement . $countDofus++] = $item;
                 }
             }
-            foreach ($item->statistiquesBonus as $statistique){
+            foreach ($item->statistiquesBonus as $statistique) {
                 $equipementStats[$statistique->libelle] += $statistique->pivot->valeur;
 
             }
@@ -85,6 +85,8 @@ class EquipementController extends Controller
             'id' => $id,
 
         ]);
+    }
+
     public function makeEquipement()
     {
         $classes = Classe::all();
@@ -92,6 +94,7 @@ class EquipementController extends Controller
             "classes" => $classes
         ]);
     }
+
     public function equipementEnregistrer()
     {
         return view('equipement_enregistrer');
@@ -103,10 +106,10 @@ class EquipementController extends Controller
         $nom = $request->input("nomEquipement");
         $classe = $request->input("classe");
         $equipement = new Equipement;
-        $equipement->classe_id=$classe;
-        $equipement->nom=$nom;
-        $equipement->user_id=Auth::id();
+        $equipement->classe_id = $classe;
+        $equipement->nom = $nom;
+        $equipement->user_id = Auth::id();
         $equipement->save();
-        return redirect()->route("show_equipement", ["id"=>$equipement->id]);
+        return redirect()->route("show_equipement", ["id" => $equipement->id]);
     }
 }
