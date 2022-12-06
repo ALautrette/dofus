@@ -21,6 +21,13 @@ Puis :
 docker compose up
 ```
 
+<h1>Utilisation du site : </h1>
+
+-   Créer un compte en cliquant sur register
+-   Cliquer sur "créer un nouvel équipement"
+-   Indiquer le nom et sélectionner la classe pui cliquer sur "Créer"
+-   Sélectionner l'équipement souhaité pour chaque emplacment avec les différents menus déroulants
+-   Cliquer sur "Sauvegarder" pour obtenir le total des statistiques (intelligence, force etc...) que donne l'équipement séléctionné
 
 
 
