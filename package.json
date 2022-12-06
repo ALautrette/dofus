@@ -1,14 +1,34 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "axios": "^1.1.2",
-        "laravel-vite-plugin": "^0.6.0",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
-        "vite": "^3.0.0"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@popperjs/core": "^2.10.2",
+    "axios": "^1.1.2",
+    "bootstrap": "^5.2.1",
+    "laravel-vite-plugin": "^0.6.0",
+    "lodash": "^4.17.19",
+    "postcss": "^8.1.14",
+    "sass": "^1.32.11",
+    "vite": "^3.0.0"
+  },
+  "name": "dofus",
+  "description": "clone le repo\r cd dofus\r docker compose up\r pour l'instant : docker desktop -> container laravel-est-1 -> trois petits points sur le côté -> open in terminal -> dans le terminal -> composer install",
+  "version": "1.0.0",
+  "main": "vite.config.js",
+  "directories": {
+    "sass": "sass --watch ./ressources/sass/app.scss:./ressources/sass/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ALautrette/dofus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ALautrette/dofus/issues"
+  },
+  "homepage": "https://github.com/ALautrette/dofus#readme"
 }
