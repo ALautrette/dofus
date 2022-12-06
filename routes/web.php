@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EquipementController;
 use App\Http\Controllers\UsersController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,13 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
+Route::get('/test', function (){
+    $array = array();
+    $array['oui'] = ['non'];
+    $array['oui'][] = ['mais'];
+    dd($array);
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -31,9 +39,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/makeequipement',  [EquipementController::class, 'makeEquipement'])->name('makeequipement');
 Route::post('/makeequipement/save', [EquipementController::class, 'saveEquipement'])->name('saveequipement');
 
-Route::get('/info',  [EquipementController::class, 'info'])->name('info');
+
+
 
 Route::get('/equipement_enregistrer',  [EquipementController::class, 'equipementEnregistrer'])->name('equipement_enregistrer');
 
-Route::get('users', [EquipementController::class, 'create']);
-Route::post('users', [EquipementController::class, 'store']);
+
+Route::get('/equipement/{id}', [EquipementController::class, 'show'])->name('show_equipement');
+
+Route::post('/equipement/save/{id}', [EquipementController::class, 'save'])->name('save_equipement')->middleware('auth');

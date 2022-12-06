@@ -9,6 +9,16 @@ class Emplacement extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'libelle',
+        'image_path',
+    ];
+
     public $timestamps = false;
 
     public function types(){

@@ -31,4 +31,7 @@
         </div>
     </div>
 </div>
+@if(1 == 1 && $test =1)
+@endif
+<p>{{$test}} !</p>
 @endsection

@@ -9,6 +9,16 @@ class Classe extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'nom',
+        'image_path',
+    ];
+
     public $timestamps = false;
 
     public function equipements(){
